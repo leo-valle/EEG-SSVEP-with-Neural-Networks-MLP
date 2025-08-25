@@ -4,7 +4,7 @@ Este projeto demonstra a classificação de Potenciais Evocados Visuais de Estad
 
 A aplicação principal dessa tecnologia está em Interfaces Cérebro-Computador (BCI), permitindo que um usuário controle um sistema (como um teclado virtual) apenas com o olhar.
 
-Principais Etapas do Projeto
+## Principais Etapas do Projeto
 Pré-processamento de Sinais EEG: Limpeza e filtragem dos dados brutos para remoção de ruídos.
 
 Extração de Características: Utilização da Transformada Rápida de Fourier (FFT) para extrair características relevantes no domínio da frequência.
@@ -15,12 +15,12 @@ Implementação de MLP: Construção e treinamento de uma rede neural para a tar
 
 Análise de Desempenho: Avaliação do modelo em três cenários distintos para testar a robustez e a capacidade de generalização.
 
-Metodologia
+## Metodologia
 O pipeline de processamento e classificação seguiu as seguintes etapas:
 
 Carregamento dos Dados: Os dados de 35 indivíduos foram carregados a partir de arquivos .mat. Cada arquivo contém registros de EEG de 5 segundos para 40 frequências de estímulo diferentes, com 6 repetições cada.
 
-Pré-processamento:
+### Pré-processamento:
 
 Recorte Temporal: 500ms do início e do fim de cada sinal foram removidos para eliminar artefatos de transição.
 
@@ -28,13 +28,13 @@ Filtro CAR (Common Average Reference): Um filtro espacial foi aplicado para redu
 
 Janelamento (Windowing): Cada sinal de 5 segundos foi dividido em 5 janelas de 1 segundo (250 amostras). Isso aumentou o número de amostras de treinamento em 5 vezes, servindo como uma forma de data augmentation.
 
-Extração de Características com FFT:
+### Extração de Características com FFT:
 
 A Transformada Rápida de Fourier (FFT) foi aplicada a cada janela de 1 segundo para converter o sinal do domínio do tempo para o domínio da frequência.
 
 A principal característica extraída foi a potência do sinal nas frequências de estímulo (8 Hz e 10 Hz) e em seus harmônicos (16 Hz, 20 Hz, 24 Hz, etc.), que é onde a resposta SSVEP se manifesta com maior intensidade.
 
-Seleção de Canais e Frequências:
+### Seleção de Canais e Frequências:
 
 Foram selecionados 9 canais da região occipital do cérebro (Pz, PO5, PO3, POz, PO4, PO6, O1, Oz, O2), que são os mais relevantes para o processamento de estímulos visuais.
 
@@ -42,7 +42,7 @@ Para a classificação, o foco foi na distinção entre os estímulos de 8 Hz e 
 
 Normalização: As características foram normalizadas para cada sujeito individualmente, garantindo que a escala dos dados não influenciasse negativamente o treinamento do modelo.
 
-Cenários de Avaliação e Resultados
+## Cenários de Avaliação e Resultados
 Foram implementados três cenários para avaliar a performance do classificador MLP:
 
 Cenário 1: Modelo Individual (Subject-Dependent)
@@ -62,7 +62,7 @@ Acurácia Média (nos 29 indivíduos restantes): 89.30% ± 8.01%
 
 Este último cenário demonstra que é possível criar um modelo generalizado ainda mais robusto ao remover dados de usuários que são "outliers" (possivelmente devido a baixa qualidade do sinal ou baixa resposta SSVEP).
 
-Como Executar o Projeto
+## Como Executar o Projeto
 Pré-requisitos: Certifique-se de ter o Python 3 e as seguintes bibliotecas instaladas:
 
 tensorflow
@@ -74,7 +74,7 @@ scipy
 Você pode instalá-las com o comando:
 pip install tensorflow scikit-learn numpy matplotlib seaborn scipy
 
-Estrutura de Dados:
+## Estrutura de Dados:
 
 Crie uma pasta para armazenar os dados (ex: SSVEP_data).
 
@@ -84,13 +84,13 @@ No notebook, atualize a variável FOLDER_PATH na primeira célula de código par
 
 Ajuste os nomes dos arquivos para seguirem uma ordem que consiga acompanhar e identificar cada individuo.
 
-Execução:
+## Execução:
 
 Abra o notebook Projeto_final_v3.ipynb em um ambiente como Jupyter Notebook ou JupyterLab.
 
 Execute as células em ordem para reproduzir todo o pipeline de análise e os resultados.
 
-Tecnologias Utilizadas
+## Tecnologias Utilizadas
 Linguagem: Python 3
 
 Ambiente: Jupyter Notebook
