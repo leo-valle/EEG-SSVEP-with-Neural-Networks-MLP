@@ -6,6 +6,9 @@ Este projeto demonstra a classificação de Potenciais Evocados Visuais de Estad
 
 A aplicação principal desta tecnologia está em Interfaces Cérebro-Computador (BCI), permitindo que um utilizador controle um sistema (como um teclado virtual ou um drone) apenas com o olhar.
 
+## DATASET utilizado
+https://bci.med.tsinghua.edu.cn/
+
 ## Principais Etapas do Projeto
 
 * **Pré-processamento de Sinais EEG:** Limpeza e filtragem dos dados brutos para remoção de ruídos.
