@@ -65,12 +65,13 @@ Este último cenário demonstra que é possível criar um modelo generalizado ai
 ## Como Executar o Projeto
 Pré-requisitos: Certifique-se de ter o Python 3 e as seguintes bibliotecas instaladas:
 
-tensorflow
+tensorflow 
 scikit-learn
 numpy
 matplotlib
 seaborn
 scipy
+
 Você pode instalá-las com o comando:
 pip install tensorflow scikit-learn numpy matplotlib seaborn scipy
 
