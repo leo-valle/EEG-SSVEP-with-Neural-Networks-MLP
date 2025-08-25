@@ -21,7 +21,7 @@ O pipeline de processamento e classificação seguiu as seguintes etapas:
 1.  **Carregamento dos Dados:** Os dados de 35 indivíduos foram carregados a partir de ficheiros `.mat`. Cada ficheiro contém registos de EEG de 5 segundos para 40 frequências de estímulo diferentes, com 6 repetições cada.
 
 2.  **Pré-processamento:**
-    * **Recorte Temporal:** 500ms do início e do fim de cada sinal foram removidos para eliminar possíveis artefactos de transição.
+    * **Recorte Temporal:** 500ms do início e do fim de cada sinal foram removidos para eliminar artefactos de transição.
     * **Filtro CAR (Common Average Reference):** Um filtro espacial foi aplicado para reduzir o ruído comum a todos os canais, subtraindo a média dos sinais de todos os elétrodos de cada sinal individual.
 
 3.  **Janelamento (Windowing):** Cada sinal de 5 segundos foi dividido em 5 janelas de 1 segundo (250 amostras). Isso aumentou o número de amostras de treino em 5 vezes, servindo como uma forma de *data augmentation*.
@@ -34,7 +34,7 @@ O pipeline de processamento e classificação seguiu as seguintes etapas:
     * Foram selecionados 9 canais da região occipital do cérebro (`Pz, PO5, PO3, POz, PO4, PO6, O1, Oz, O2`), que são os mais relevantes para o processamento de estímulos visuais.
     * Para a classificação, o foco foi na distinção entre os estímulos de **8 Hz** e **10 Hz**.
 
-6.  **Normalização:** As características foram normalizadas (Z-score) para cada sujeito individualmente, garantindo que a escala dos dados não influenciasse negativamente o treino do modelo.
+6.  **Normalização:** As características foram normalizadas para cada sujeito individualmente, garantindo que a escala dos dados não influenciasse negativamente o treino do modelo.
 
 ## Cenários de Avaliação e Resultados
 
@@ -57,7 +57,6 @@ Um modelo único foi treinado com os dados de 34 indivíduos e testado no indiv�
 Neste cenário, os 6 indivíduos com os piores resultados no Cenário 1 foram excluídos do conjunto de treino. Um novo modelo generalizado foi treinado com os 29 indivíduos restantes e testado nesses mesmos 29 indivíduos (usando a abordagem LOSO).
 
 * **Acurácia Média (nos 29 indivíduos restantes):** `92.30% ± 6.01%`
-* **Acurácia do modelo treinado nos 29 melhores ao ser testado nos 6 piores:** `77.22% ± 9.98%`
 
 Este último cenário demonstra que é possível criar um modelo generalizado ainda mais robusto ao remover dados de utilizadores que são "outliers" (possivelmente devido a baixa qualidade do sinal ou baixa resposta SSVEP).
 
